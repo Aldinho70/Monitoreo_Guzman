@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Actualización en tiempo real del JSON</title>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="guzman.css">
+        <script type="text/javascript"
+            src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
+        <script src="notifications.js"></script>
+        <script src="cargadosinreportar.js"></script>
+        <script src="totalcargados.js"></script>
+        <script src="cargadosdetenidos.js"></script>
+        <script src="cargadosmov.js"></script>
+        <script src="cargando.js"></script>
+        <script src="descargando.js"></script>
+        <script src="desvio.js"></script>
+        <script src="sinstatus.js"></script>
+        <script src="vacios.js"></script>
+        <script src="vaciosdet.js"></script>
+        <script src="vaciosmov.js"></script>
+        <script src="cajasguzman.js"></script>
+
+
+
+
+
+        <script>
+        // Variables globales para los marcadores y mapa de Google
+        var map;
+        var markers = [];
+        var infoWindow;
+        
+
+        // Función para inicializar el mapa de Google
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 20.6784, lng: -101.3547 },
+                zoom: 5
+            });
+            infoWindow = new google.maps.InfoWindow();
+        }
+
+        // Función para agregar un marcador en el mapa
+        function addMarker(lat, lng, unidad) {
+            var marker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: map,
+                label:unidad
+            });
+            markers.push(marker);
+
+            // Mostrar la ventana de información y hacer zoom al hacer clic en el marcador
+            marker.addListener('click', function() {
+                infoWindow.setContent(unidad); // Establecer el contenido de la ventana de información como el nombre de la unidad
+                infoWindow.open(map, marker);
+                map.setZoom(12); // Establecer el nivel de zoom deseado
+                map.setCenter(marker.getPosition()); // Centrar el mapa en el marcador
+            });
+
+            return marker;
+        }
+
+        // Función para manejar el cambio de la alternancia del botón
+        function createToggleButtonHandler(lat, lng, unidad) {
+            return function() {
+                var index = parseInt($(this).attr("id").substr(6));
+
+                if ($(this).is(":checked")) {
+                    markers[index] = addMarker(lat, lng, unidad);
+                } else {
+                    markers[index].setMap(null);
+                }
+            };
+        }
+        // Ejecutar la función al cargar la página
+        $(document).ready(function () {
+
+            initMap();
+            
+        });
+        </script>
+    </head>
+    <body>
+
+        <button id="botonTotalcargados"></button>
+        <script>
+  $("#botonTotalcargados").on("click", function() {
+  // Crear el contenedor div
+    var contenedor = $("<div>").attr("id", "contenedor");
+        $("#contenedor").show();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+        $("#contenedor12").hide();
+        
+
+    $(".tabla-jsoncargados").show();
+  $(".tabla-jsonsinreportar").hide();
+  $(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+});
+</script>
+        <button id="botonTotalsinreportar"></button>
+        <script>
+$("#botonTotalsinreportar").on("click", function() {
+      // Crear el contenedor div
+    var contenedor2 = $("<div>").attr("id", "contenedor2");
+        $("#contenedor").hide();
+        $("#contenedor2").show();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+$(".tabla-jsoncargados").hide();
+ $(".tabla-jsonsinreportar").show();
+ $(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotalcargadosdet"></button>
+        <script>
+$("#botonTotalcargadosdet").on("click", function() {
+    var contenedor3 = $("<div>").attr("id", "contenedor3");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").show();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").show();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotalcargadosmov"></button>
+        <script>
+$("#botonTotalcargadosmov").on("click", function() {
+var contenedor4 = $("<div>").attr("id", "contenedor4");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").show();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+        $("#contenedor12").hide();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").show();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotalcargando"></button>
+        <script>
+$("#botonTotalcargando").on("click", function() {
+    var contenedor = $("<div>").attr("id", "contenedor5");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").show();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").show();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotaldescargando"></button>
+        <script>
+$("#botonTotaldescargando").on("click", function() {
+    var contenedor6 = $("<div>").attr("id", "contenedor6");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").show();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+
+    
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").show();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotaldesvio"></button>
+        <script>
+$("#botonTotaldesvio").on("click", function() {
+  var contenedor7 = $("<div>").attr("id", "contenedor7");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").show();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").show();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+});
+</script>
+        <button id="botonTotalsinstatus"></button>
+        <script>
+$("#botonTotalsinstatus").on("click", function() {
+      var contenedor8 = $("<div>").attr("id", "contenedor8");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").show();
+        $("#contenedor7").hide();
+        $("#contenedor8").show();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").show();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotalvacios"></button>
+        <script>
+$("#botonTotalvacios").on("click", function() {
+      var contenedor9 = $("<div>").attr("id", "contenedor9");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").show();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").show();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+});
+</script>
+        <button id="botonTotalvaciosdet"></button>
+        <script>
+$("#botonTotalvaciosdet").on("click", function() {
+      var contenedor10 = $("<div>").attr("id", "contenedor10");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").show();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").show();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+
+
+});
+</script>
+        <button id="botonTotalvaciosmov"></button>
+        <script>
+$("#botonTotalvaciosmov").on("click", function() {
+
+      var contenedor11 = $("<div>").attr("id", "contenedor11");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").show();
+                $("#contenedor12").hide();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").show();
+$(".tabla-jsoncajas").hide();
+});
+
+
+</script>
+        <button id="botonTotalcajas"></button>
+        <script>
+$("#botonTotalcajas").on("click", function() {
+
+      var contenedor12 = $("<div>").attr("id", "contenedor12");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").show();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").show();
+});
+
+
+</script>
+        <div id="contenedor"></div>
+        <div id="contenedor2"></div>
+        <div id="contenedor3"></div>
+
+        <div id="contenedor4"></div>
+
+        <div id="contenedor5"></div>
+
+        <div id="contenedor6"></div>
+
+        <div id="contenedor7"></div>
+
+        <div id="contenedor8"></div>
+
+        <div id="contenedor9"></div>
+
+        <div id="contenedor10"></div>
+
+        <div id="contenedor11"></div>
+
+        <div id="contenedor12"></div>
+
+
+
+
+        <div id="map" style="height: 400px; width:800px;
+            position:absolute;right: 3%;top:9%;"></div>
+
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsx7PVLRF_dl69ASpxaEHhsCxpkTckd0&callback=initMap"></script>
+        <div id="container">
+            <div id="close_popup"> x </div>
+            CONTEO DE NOTIFICACIONES <span id="count"></span><br>
+            <table id="notification">
+                <tr>
+                    <td>NOMBRE</td>
+                    <td>TEXTO</td>
+                    <td>ATENDER</td>
+                </tr>
+            </table>
+        </div>
+        <div id="log"></div>
+
+
+        <script type="text/javascript">
+              // MENSAJE PARA LOG
+              
+              </script>
+    </body>
+</html>

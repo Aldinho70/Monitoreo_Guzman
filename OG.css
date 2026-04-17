@@ -1,0 +1,200 @@
+body{
+    background-color:#f0d8b8!important;
+}
+/*HEADER STUFF*/
+img{
+    margin-left: 15px;
+    display: inline-block;
+  }
+  h2{ 
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 200px;
+    display: inline-block;
+  }
+/*HEADER STUFF*/
+/*NAVBAR STUFF*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+  
+  li {
+    float: left;
+  }
+  
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  
+  li a:hover {
+    background-color: #111;
+  }
+/*NAVBAR STUFF*/
+/*MAIN GRID CONTAINER*/
+/* CSS */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 50%;
+}
+.inner {
+    width: 25%;
+    height: 200px;
+    /*background-color: red;*/
+}
+#map {
+    width: 100%;
+    height: 400px;
+    background-color: brown;
+    margin-right: 15px;
+}
+.containerofcontainer{
+    display: flex;
+    flex-direction: row;
+}
+/* add margin to the map div */
+/*CSS PARA EL BOTON*/
+#botonModal{
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  font-weight: bold;
+}
+#botonModal2{
+  width: 90%;
+  height: 90%;
+  border-radius: 20px;
+  font-weight: bold;
+}
+#botonModal3{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#botonModal4{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+}
+#botonModal5{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal6{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal7{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal8{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal9{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal10{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+#botonModal11{
+  width: 80%;
+  height: 80%;
+  border-radius: 20px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+#a{
+  padding: 10px;
+}
+#b{
+  padding: 10px;
+}
+h3{
+  font-size: 70px;
+}
+h4+{
+  font-weight: bold;
+}
+/*CSS PARA EL BOTON*/
+/*CSS PARA LOS MODAL*/
+/* Modal Content */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  padding-top: 80px;
+  width: 800px;
+  height: 800px;
+  overflow: auto;
+  background-color: rgb(0,0,0);
+  background-color: rgba(0,0,0,0.4);
+  }
+  
+  .modal-content {
+  background-color: #fefefe;
+  width: 100%;
+  max-width: 800px;
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #888;
+  }
+  
+  .close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+  }
+ 
+

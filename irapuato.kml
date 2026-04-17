@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<kml>
+	<Document>
+		<name>
+			irapuato
+		</name>
+		<Placemark>
+			<name>
+				BODEGA LALA IRAPUATO
+			</name>
+			<description>
+				Carretera Irapuato-Abasolo, Irapuato, Guanajuato
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99c6af76
+					</color>
+					<width>
+						50.0
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99c6af76
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.389904861,20.6311229476,0 -101.391523485,20.6293407263,0 -101.38622344,20.6286077392,0 -101.385951284,20.630535561,0 -101.389904861,20.6311229476,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>
+				CEDIS LALA IRAPUATO
+			</name>
+			<description>
+				Avenida San Miguel De Allende, Ciudad Industrial, Irapuato, Guanajuato 36541
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99cc6600
+					</color>
+					<width>
+						10
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99cc6600
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.296415503,20.6333948195,0 -101.296737368,20.6315874958,0 -101.293282683,20.6311657838,0 -101.293046649,20.6329128686,0 -101.296415503,20.6333948195,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>
+				CEDIS/PLANTA LALA IRAPUATO
+			</name>
+			<description>
+				Avenida San Miguel De Allende, Ciudad Industrial, Irapuato, Guanajuato 36541
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99cc6600
+					</color>
+					<width>
+						50.0
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99cc6600
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.296451449,20.6332304336,0 -101.297299027,20.6281999907,0 -101.291956067,20.6277581873,0 -101.291687846,20.6325175466,0 -101.296451449,20.6332304336,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>
+				COCA COLA IRAPUATO
+			</name>
+			<description>
+				5Ta Avenida, Fracc Gámez, Irapuato, Guanajuato 36650
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99b8a646
+					</color>
+					<width>
+						50.0
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99b8a646
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.360222543,20.6895234335,0 -101.360549504,20.6901351826,0 -101.359170098,20.6909954912,0 -101.358475245,20.6894765613,0 -101.360222543,20.6895234335,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Document>
+</kml>
+

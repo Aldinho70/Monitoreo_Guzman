@@ -1,0 +1,1097 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+        <meta http-equiv="Cache-Control" content="no-cache, mustrevalidate">
+        
+        
+        <link rel="stylesheet" type="text/css" href="guzman.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/tguzman.ico">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,600&display=swap"
+            rel="stylesheet">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+            crossorigin="anonymous"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous">
+        <script src="sort-table.js"></script>
+             <!--  <script  
+                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsx7PVLRF_dl69ASpxaEHhsCxpkTckd0&callback=initMap" ></script>
+                 -->   
+                    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsx7PVLRF_dl69ASpxaEHhsCxpkTckd0&libraries=geometry,drawing,places,visualization&v=quarterly" defer ></script>
+
+        <title>OPERACION GUZMAN</title>
+       
+        <script>
+        
+    var counter = 60;
+
+    // The countdown method.
+    window.setInterval(function () {
+        counter--;
+        if (counter >= 0) {
+            var span;
+            span = document.getElementById("cnt");
+            span.innerHTML = counter;
+        }
+        if (counter === 0) {
+            counter = 60; // reinicializar el contador
+        }
+
+    }, 1000);
+
+
+    // Refresh or reload page.
+    function refresh() {
+
+    }
+</script>
+      
+            
+          
+          
+
+        <script type="text/javascript"
+            src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
+
+
+        <!-- <script src="campospersonalizados.js"></script>  -->
+
+
+
+
+
+
+       
+        <header>
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/tguzman.jpg" width="50" height="50" alt="">
+            <h2 style="color: white; position:absolute;">Operacion Guzman</h2>
+            <div class="menusuperior" style="position:absolute;left:30%;top: 18%;font-size:25px;border: solid 1px black;padding:2px;background-color: gainsboro;">
+                <a class="vistageneral" href="operacionguzman.html" style="text-decoration: none;">Vista General</a>
+                <a class="campos" href="campospersonalizados.html" style="text-decoration: none;">Campos Personalizados</a>
+                <button onclick="window.open('http://ws4cjdg.com/JDigitalUnidades/Template/registro_Incidentes.php#step-1', '_blank')" style="background-color: transparent;">Registrar Incidencia</button>
+            </div>
+            <div>
+            </div>
+        </a>
+    </nav>
+</header>
+    <!--<script>
+$(document).ready(function(){
+  // Oculta el contenido de la clase 'bitacora' al cargar la página
+  $('.bitacora').hide();
+$('#campospersonalizados').remove();
+
+
+  // Deshabilita el código JavaScript en la clase 'bitacora'
+  var intervalBitacora = null;
+
+  $('#General').click(function(){
+    // Muestra el contenido de la clase 'body' y oculta la clase 'bitacora'
+    $('.general').show();
+    $('.bitacora').hide();
+
+    // Detiene el código JavaScript en la clase 'bitacora'
+    clearInterval(intervalBitacora);
+    intervalBitacora = null;
+
+    // Activa el código JavaScript en la clase 'general'
+    if (!intervalBody) {
+      intervalBody = setInterval(function(){
+        // Código del timer para la clase 'general'
+      }, 60000);
+    }
+  });
+
+  $('#Bitacora').click(function(){
+
+    
+    $('.bitacora').show();
+    
+
+
+    $('.general').hide();
+
+    // Detiene el código JavaScript en la clase 'general'
+    clearInterval(intervalBody);
+    intervalBody = null;
+  
+
+    // Activa el código JavaScript en la clase 'bitacora'
+    if (!intervalBitacora) {
+      intervalBitacora = setInterval(function(){
+        // Código del timer para la clase 'bitacora'
+      }, 10000);
+    }
+  });
+});
+</script>-->
+</head>
+    <body>
+        
+        
+        
+        
+         <script>
+        // Variables globales para los marcadores y mapa de Google
+        var map;
+
+        var markers = [];
+        var infoWindow;
+
+
+    var src =  'lala2.kml';
+
+
+
+// Función para inicializar el mapa de Google
+function initMap() {
+  map = new google.maps.Map(document.getElementById('map'), {
+    center: { lat: 20.6784, lng: -101.3547 },
+    zoom: 7,
+    mapTypeId: 'hybrid'
+    
+  });
+  
+  infoWindow = new google.maps.InfoWindow();
+
+
+        const kmlLayer = new google.maps.KmlLayer( {
+      url: 'http://ws4cjdg.com/OPERACION_GUZMAN/empresas.kmz',
+          map: map
+        });
+
+
+            
+}
+
+        // Función para agregar un marcador en el mapa
+        function addMarker(lat, lng, unidad) {
+            var marker = new google.maps.Marker({
+                position: { lat: lat, lng: lng },
+                map: map,
+                label:unidad
+            });
+            markers.push(marker);
+
+            // Mostrar la ventana de información y hacer zoom al hacer clic en el marcador
+            marker.addListener('click', function() {
+                infoWindow.setContent(unidad); // Establecer el contenido de la ventana de información como el nombre de la unidad
+                infoWindow.open(map, marker);
+                
+            });
+                map.setZoom(14);  // Establecer el nivel de zoom deseado
+                map.setCenter(marker.getPosition()); // Centrar el mapa en el marcador
+
+            return marker;
+        }
+
+        // Función para manejar el cambio de la alternancia del botón
+        function createToggleButtonHandler(lat, lng, unidad) {
+            return function() {
+                var index = parseInt($(this).attr("id").substr(6));
+
+                if ($(this).is(":checked")) {
+                    markers[index] = addMarker(lat, lng, unidad);
+                } else {
+                    markers[index].setMap(null);
+                }
+            };
+        }
+        // Ejecutar la función al cargar la página
+        $(document).ready(function () {
+
+            initMap();
+            
+        });
+        </script>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+         <script type="text/javascript"
+            src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
+        <script class="notifications" src="notifications.js"></script>
+        <script src="./cargadosinreportar.js"></script>
+        <script src="./totalcargados.js"></script>
+        <script src="./cargadosdetenidos.js"></script>
+        <script src="./cargadosmov.js"></script>
+        <script src="./cargando.js"></script>
+        <script src="./descargando.js"></script>
+        <script src="./desvio.js"></script>
+        <script src="./sinstatus.js"></script>
+        <script src="./vacios.js"></script>
+        <script src="./vaciosdet.js"></script>
+        <script src="./vaciosmov.js"></script>
+        <script src="./cajasguzman.js"></script>
+        <script src="./totalsinreportar.js"></script>
+        <script src="./doblessinreportar.js"></script>
+        <script src="./fallatemperatura.js"></script>
+         <script src="./cajasdsinrep.js"></script>
+
+        <!--COMIENZO DEL HEADER-->
+
+        <div class="general">
+            <!--HEADER STUFF-->
+
+            <!--HEADER STUFF-->
+            <div class="counter">Actualizacion en <span id="cnt"
+                    style="color:red;">60</span> Segundos</div>
+            <div class="mastercontainer">
+
+<div id="campos">
+    <h3> Campos Personalizados</h3>
+                <div id="camposcontainer"></div>
+                </div>
+
+
+                <div class="contenedordebotones">
+                    <button id="botonTotalcargados">
+                            <div class="effect-1"></div>
+    <div class="effect-2"></div>
+                    </button>
+
+                    <script>
+  $("#botonTotalcargados").on("click", function() {
+  // Crear el contenedor div
+    var contenedor = $("<div>").attr("id", "contenedor");
+        $("#contenedor").show();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+        $("#contenedor12").hide();
+        $("#contenedor13").hide();
+        $("#contenedor14").hide();
+        $("#contenedor15").hide();
+                $("#contenedor16").hide();
+
+
+        $("#camposmaster").hide();
+
+    $(".tabla-jsoncargados").show();
+  $(".tabla-jsonsinreportar").hide();
+  $(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+});
+</script>
+                    <button id="botonTotalsinreportar"></button>
+                    <script>
+$("#botonTotalsinreportar").on("click", function() {
+      // Crear el contenedor div
+    var contenedor2 = $("<div>").attr("id", "contenedor2");
+        $("#contenedor").hide();
+        $("#contenedor2").show();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+$(".tabla-jsoncargados").hide();
+ $(".tabla-jsonsinreportar").show();
+ $(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+});
+</script>
+                    <button id="botonTotalcargadosdet"></button>
+                    <script>
+$("#botonTotalcargadosdet").on("click", function() {
+    var contenedor3 = $("<div>").attr("id", "contenedor3");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").show();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").show();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+
+});
+</script>
+                    <button id="botonTotalcargadosmov"></button>
+                    <script>
+$("#botonTotalcargadosmov").on("click", function() {
+var contenedor4 = $("<div>").attr("id", "contenedor4");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").show();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+        $("#contenedor12").hide();
+        $("#contenedor13").hide();
+        $("#contenedor14").hide();
+        $("#contenedor15").hide();
+                        $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").show();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+
+});
+</script>
+                    <button id="botonTotalcargando"></button>
+                    <script>
+$("#botonTotalcargando").on("click", function() {
+    var contenedor = $("<div>").attr("id", "contenedor5");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").show();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").show();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+
+});
+</script>
+                    <button id="botonTotaldescargando"></button>
+                    <script>
+$("#botonTotaldescargando").on("click", function() {
+    var contenedor6 = $("<div>").attr("id", "contenedor6");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").show();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+
+    
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").show();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+
+});
+</script>
+                    <button id="botonTotaldesvio"></button>
+                    <script>
+$("#botonTotaldesvio").on("click", function() {
+  var contenedor7 = $("<div>").attr("id", "contenedor7");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").show();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").show();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+});
+</script>
+                    <button id="botonTotalsinstatus"></button>
+                    <script>
+$("#botonTotalsinstatus").on("click", function() {
+      var contenedor8 = $("<div>").attr("id", "contenedor8");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").show();
+        $("#contenedor7").hide();
+        $("#contenedor8").show();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").show();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+});
+</script>
+                    <button id="botonTotalvacios"></button>
+                    <script>
+$("#botonTotalvacios").on("click", function() {
+      var contenedor9 = $("<div>").attr("id", "contenedor9");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").show();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").show();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+});
+</script>
+                    <button id="botonTotalvaciosdet"></button>
+                    <script>
+$("#botonTotalvaciosdet").on("click", function() {
+      var contenedor10 = $("<div>").attr("id", "contenedor10");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").show();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").show();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+
+
+});
+</script>
+                    <button id="botonTotalvaciosmov"></button>
+                    <script>
+$("#botonTotalvaciosmov").on("click", function() {
+
+      var contenedor11 = $("<div>").attr("id", "contenedor11");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").show();
+                $("#contenedor12").hide();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+                $("#camposmaster").hide();
+                
+
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").show();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+});
+
+
+</script>
+                    <button id="botonTotalcajas"></button>
+                    <script>
+$("#botonTotalcajas").on("click", function() {
+
+      var contenedor12 = $("<div>").attr("id", "contenedor12");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").show();
+                $("#contenedor13").hide();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-jsoncajas").show();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+});
+</script>
+                    
+        <button id="totalsinreportar"></button>
+        <script>
+$("#totalsinreportar").on("click", function() {
+
+      var contenedor13 = $("<div>").attr("id", "contenedor13");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+                $("#contenedor12").hide();
+                $("#contenedor13").show();
+                $("#contenedor14").hide();
+                $("#contenedor15").hide();
+                                $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").show();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+});
+</script>
+
+
+<button id="doblessinreportar"></button>
+<script>
+$("#doblessinreportar").on("click", function() {
+
+var contenedor14 = $("<div>").attr("id", "contenedor14");
+$("#contenedor").hide();
+$("#contenedor2").hide();
+$("#contenedor3").hide();
+$("#contenedor4").hide();
+$("#contenedor5").hide();
+$("#contenedor6").hide();
+$("#contenedor7").hide();
+$("#contenedor8").hide();
+$("#contenedor9").hide();
+$("#contenedor10").hide();
+$("#contenedor11").hide();
+        $("#contenedor12").hide();
+        $("#contenedor13").hide();
+        $("#contenedor13").hide();
+        $("#contenedor14").show();
+        $("#contenedor15").hide();
+                        $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrdoblessinreportar").show();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").hide();
+
+
+});
+</script>
+
+
+<button id="fallatemperatura"></button>
+<script>
+$("#fallatemperatura").on("click", function() {
+
+var contenedor15 = $("<div>").attr("id", "contenedor15");
+$("#contenedor").hide();
+$("#contenedor2").hide();
+$("#contenedor3").hide();
+$("#contenedor4").hide();
+$("#contenedor5").hide();
+$("#contenedor6").hide();
+$("#contenedor7").hide();
+$("#contenedor8").hide();
+$("#contenedor9").hide();
+$("#contenedor10").hide();
+$("#contenedor11").hide();
+        $("#contenedor12").hide();
+        $("#contenedor13").hide();
+        $("#contenedor13").hide();
+        $("#contenedor14").hide();
+        $("#contenedor15").show();
+                        $("#contenedor16").hide();
+
+$("#camposmaster").hide();
+$(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").show();
+$(".tabla-jsoncajasd").hide();
+
+
+});
+</script>
+         <button id="botonTotalcajasd"></button>
+                    <script>
+$("#botonTotalcajasd").on("click", function() {
+
+      var contenedor16 = $("<div>").attr("id", "contenedor16");
+        $("#contenedor").hide();
+        $("#contenedor2").hide();
+        $("#contenedor3").hide();
+        $("#contenedor4").hide();
+        $("#contenedor5").hide();
+        $("#contenedor6").hide();
+        $("#contenedor7").hide();
+        $("#contenedor8").hide();
+        $("#contenedor9").hide();
+        $("#contenedor10").hide();
+        $("#contenedor11").hide();
+        $("#contenedor12").hide();
+        $("#contenedor13").hide();
+        $("#contenedor14").hide();
+        $("#contenedor15").hide();
+            $("#contenedor16").show();
+
+$("#camposmaster").hide();
+    $(".tabla-jsoncargados").hide();
+$(".tabla-jsonsinreportar").hide();
+$(".tabla-jsoncargadosdetenidos").hide();
+$(".tabla-jsoncargadosmov").hide();
+$(".tabla-jsoncargando").hide();
+$(".tabla-jsondescargando").hide();
+$(".tabla-jsondesvio").hide();
+$(".tabla-jsonsinstatus").hide();
+$(".tabla-jsonvacios").hide();
+$(".tabla-jsonvaciosdet").hide();
+$(".tabla-jsonvaciosmov").hide();
+$(".tabla-json_arrtractossinreportar").hide();
+$(".tabla-jsoncajas").hide();
+$(".tabla-json_arrdoblessinreportar").hide();
+$(".tabla-json_arrfallatemperatura").hide();
+$(".tabla-jsoncajasd").show();
+
+});
+
+
+</script>
+                </div>
+
+
+                <div class="contenedordecontenedores">
+                    <div id="contenedor"></div>
+                    <div id="contenedor2"></div>
+                    <div id="contenedor3"></div>
+
+                    <div id="contenedor4"></div>
+
+                    <div id="contenedor5"></div>
+
+                    <div id="contenedor6"></div>
+
+                    <div id="contenedor7"></div>
+
+                    <div id="contenedor8"></div>
+
+                    <div id="contenedor9"></div>
+
+                    <div id="contenedor10"></div>
+
+                    <div id="contenedor11"></div>
+
+                    <div id="contenedor12"></div>
+                    <div id="contenedor13"></div>
+                    <div id="contenedor14"></div>
+                    <div id="contenedor15"></div>
+                    <div id="contenedor16"></div>
+
+
+                </div>
+
+                <div class="contenedormapa">
+                    <div id="map"></div>
+                </div>
+            
+                <div id="container">
+                    <div id="close_popup"> x </div>
+                    CONTEO DE NOTIFICACIONES <span id="count"></span><br>
+                    <table id="notification">
+                        <tr>
+                            <td>NOMBRE</td>
+                            <td>TEXTO</td>
+                            <td>ATENDER</td>
+                        </tr>
+                    </table>
+                </div>
+                <div id="log"></div>
+
+
+                <script type="text/javascript">
+              // MENSAJE PARA LOG
+              
+              </script>
+            </div>
+        </div>
+
+        <div class="bitacora">
+
+            <!--<script id="campospersonalizados" src="campospersonalizados.js"></script>-->
+            <div id="camposmaster">
+                <p>
+                    Seleccionar unidad:
+                    <select id="units">
+                        <option>Seleccionar unidad...</option>
+                    </select>
+                    Seleccionar campo:
+                    <select id="props">
+                        <option>Seleccionar campo...</option>
+                    </select>
+                </p>
+                <table id="table">
+                    <tr>
+                        <td>ID</td>
+                        <td>Nombre del campo</td>
+                        <td>Valor del campo</td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" id="prop_id" placeholder="id del
+                                campo" disabled="disabled" /></td>
+                        <td><input type="text" id="prop_name"
+                                placeholder="nombre del campo" /></td>
+                        <td><input type="text" id="prop_value"
+                                placeholder="valor del campo" /></td>
+                    </tr>
+                </table>
+                <p>
+                    <input type="button" value="Create" id="create_btn" />
+                    <input type="button" value="Actualizar campo"
+                        id="update_btn" />
+
+                    <!--<input type="button" value="Delete" id="delete_btn" />-->
+                </p>
+
+                <div id="log"></div>
+            </div>
+
+
+
+
+
+
+        </div>
+
+    </body>
+
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script type="module" src="./backend/src/index.js"></script>
+    <script src="./backend/src/services/wialon/wialon.js" ></script>
+    <script src="./backend/src/services/guzman/jsonInterceptor.js" ></script>
+
+
+</html>

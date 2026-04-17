@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<kml>
+	<Document>
+		<name>
+			lalagzm
+		</name>
+		<Placemark>
+			<name>
+				CEDIS LALA IRAPUATO
+			</name>
+			<description>
+				Avenida San Miguel De Allende, Ciudad Industrial, Irapuato, Guanajuato 36541
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99cc6600
+					</color>
+					<width>
+						10
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99cc6600
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.296415503,20.6333948195,0 -101.296737368,20.6315874958,0 -101.293282683,20.6311657838,0 -101.293046649,20.6329128686,0 -101.296415503,20.6333948195,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+		<Placemark>
+			<name>
+				LALA IRAPUATO
+			</name>
+			<description>
+				Avenida Irapuato, Ciudad Industrial, Irapuato, Guanajuato 36541
+			</description>
+			<Style>
+				<LineStyle>
+					<color>
+						99cccc00
+					</color>
+					<width>
+						50.0
+					</width>
+				</LineStyle>
+				<PolyStyle>
+					<color>
+						99cccc00
+					</color>
+				</PolyStyle>
+			</Style>
+			<Polygon>
+				<outerBoundaryIs>
+					<LinearRing>
+						<coordinates>
+							-101.292067455,20.6278054397,0 -101.29146664,20.6325647974,0 -101.296412634,20.6331270746,0 -101.297228025,20.6283275706,0 -101.292067455,20.6278054397,0
+						</coordinates>
+					</LinearRing>
+				</outerBoundaryIs>
+			</Polygon>
+		</Placemark>
+	</Document>
+</kml>
+

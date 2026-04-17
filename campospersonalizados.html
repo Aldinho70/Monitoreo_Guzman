@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html>
+<head>
+           
+
+    <meta charset="utf-8" />
+    <title></title>
+    <script type="text/javascript" src="//code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript" src="//hst-api.wialon.com/wsdk/script/wialon.js"></script>
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="guzman.css">
+        <link rel="shortcut icon" type="image/x-icon" href="/tguzman.ico">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@1,600&display=swap"
+            rel="stylesheet">
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.min.js"
+            integrity="sha384-Y4oOpwW3duJdCWv5ly8SCFYWqFDsfob/3GkgExXKV4idmbt98QcxXYs9UoXAB7BZ"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"
+            integrity="sha384-zYPOMqeu1DAVkHiLqWBUTcbYfZ8osu1Nd6Z89ify25QV9guujx43ITvfi12/QExE"
+            crossorigin="anonymous"></script>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
+            crossorigin="anonymous">
+     <link rel="stylesheet" type="text/css" href="guzman.css">
+     
+     
+
+
+
+</head>
+<body>
+    
+           <header>
+    <nav class="navbar navbar-light bg-dark">
+        <a class="navbar-brand" href="#">
+            <img src="/tguzman.jpg" width="50" height="50" alt="">
+            <h2 style="color: white; font-size: 32px; position:absolute;">Operacion Guzman</h2>
+            <div class="menusuperior" style="text-decoration: none; position:absolute;left:30%;top: 18%;font-size:25px;border: solid 1px black;padding:2px;background-color: gainsboro;">
+                <a class="vistageneral" href="operacionguzman.html">Vista General</a>
+                <a class="campos" href="campospersonalizados.html">Campos Personalizados</a>
+            </div>
+        </a>
+    </nav>
+</header>
+    
+    
+    
+<style>
+#log, td{ border: 1px solid #c6c6c6; padding:5px;}
+table select, table input { width:100%; }
+</style>
+
+
+<p>
+	Seleccione unidad:
+		<select id="units">
+				<option>Seleccione unidad...</option>
+		</select>
+		<div id="props">LLENE CAMPO Y ACTUALICE SOLO EL QUE DESEA MODIFICAR
+
+		</div>
+</p>
+	<table id="table">
+		<tr>
+			<td hidden >ID</td>
+			<td>Nombre</td>
+			<td>Valor</td>
+		</tr>
+		<tr>
+			<!--<td hidden><input type="text" id="prop_id"  placeholder="prop_id" disabled="disabled"/></td>
+			<td><input type="text" id="prop_name" placeholder="Campo" disabled="disabled"/></td>
+			<td><input type="text" id="prop_value" placeholder="Valor"/></td>
+			-->
+		</tr>
+	</table>
+	<p>
+		<!--<input  type="button" value="Create" id="create_btn"/>-->
+
+	    <!--<input type="button" value="Actualizar campo" id="update_btn"/>-->
+
+		<!--<input type="button" value="Delete" id="delete_btn"/>-->
+		
+		
+	</p>
+
+<div id="log"></div>
+
+
+<script type="text/javascript">
+var cur_unit = null; // global variable
+var cur_prop = null; // global variable
+var sess = null;
+
+// Print message to log
+function msg(text) { $("#log").prepend(text + "<br/>"); }
+
+function init() { // Execute after login succeed
+  	$unitsSelect = $("#units");
+	sess = wialon.core.Session.getInstance(); // get instance of current Session
+  
+  
+	// flags to specify what kind of data should be returned
+	var flags = wialon.item.Item.dataFlag.base;
+
+    sess.updateDataFlags( // load items to current session
+	[{type: "type", data: "avl_unit", flags: flags, mode: 0}], // Items specification
+		function (code) { // updateDataFlags callback
+    		if (code) { msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
+
+            // get loaded 'avl_unit's items  
+	    	var units = sess.getItems("avl_unit");
+    		if (!units || !units.length){ msg("Units not found"); return; } // check if units found
+
+		    for (var i = 0; i< units.length; i++){ // construct Select object using found units
+			    var u = units[i]; // current item in cycle
+              
+                // append option to select
+			    $unitsSelect.append("<option value='"+ u.getId() +"'>"+ u.getName()+ "</option>");
+			}
+
+            // bind action to select change event
+          $unitsSelect.change( getProperties  );
+	    }
+	);
+}
+
+function getProperties(){ // construct properties Select list for selected item
+
+	if(!$("#units").val()){ msg("Properties item"); return;} // exit if no item selected
+	
+  	clearForm(); // clear fields
+
+  	var id = parseInt( $("#units").val() );
+  
+  	// IMPORTANT! for loading custom fields needed loaded library "itemCustomFields"
+  
+	sess.loadLibrary("itemCustomFields");
+
+    // flags to specify what kind of data should be returned
+	
+    var flags = wialon.util.Number.or(wialon.item.Item.dataFlag.base, wialon.item.Item.dataFlag.customFields, wialon.item.Item.dataFlag.adminFields);
+  	
+    sess.updateDataFlags( // load items to current session
+	[{type: "type", data: "avl_unit", flags: flags, mode: 0}], // Items specification
+		function (code) { // updateDataFlags callback
+          
+            if (code) { msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
+
+            // get loaded 'avl_unit's item by ID  
+	    	var unit = sess.getItem( id );
+          
+			var pr  = unit.getCustomFields();
+          
+			// save to global variable
+            cur_unit = unit;
+            cur_prop = pr;
+
+			// reset select
+			//$("#props").html('<button>Seleccione Campo...</button>')
+            
+			for (var i in pr) {  // construct select list
+    var property = pr[i];
+	var row = `
+<tr id="prop_row_${i}">
+    <td>${property.id}</td>
+    <td>${property.n}</td>
+    <td><input type="text" class="prop_value_${i}" placeholder="Valor" value="${property.v}"/></td>
+    <td><button onclick="updateProperties('${property.id}','${property.n}', $('.prop_value_${i}').val())">Actualizar</button></td>
+</tr>
+`;
+    $("#table").append(row);
+}
+/*
+            	//$("#props").append("<table value='" + pr[i].id + "'>" + pr[i].n + "</table>");
+				$("#props").append(`
+    <table id="table">
+        <tr>
+            <td hidden>ID</td>
+            <td>Nombre</td>
+            <td>Valor</td>
+        </tr>
+        <tr>
+            <td hidden><input type="text" id="prop_id" placeholder="prop_id" disabled="disabled"/></td>
+            <td><input type="text" id="prop_name" placeholder="Campo" disabled="disabled"/></td>
+            <td><input type="text" id="prop_value" placeholder="Valor"/></td>
+        </tr>
+    </table>
+`);
+*/
+				//msg( 'load property: ' +  pr[i].n)
+            }
+			//	msg('');
+          	
+          	// bind action to select change event
+          	//$("#props").hover( renderProp );
+			//renderProps();
+	/*		$(".prop_value").each(function() {
+  var propId = $(this).closest("tr").find("td:first-child").text();
+  var prop_id = $(this).closest("tr").find("td:first-child").text();
+
+  var name = $(this).closest("tr").find("td:second-child").text();
+  var value = $(this).closest("tr").find("td:third-child").text();
+
+
+  $(this).val(cur_prop[propId].v);
+});
+        */
+	);
+}
+
+function clearForm(){ // clear fields function
+	cur_prop = null;
+	$("#prop_id").val("");
+	$("#prop_name").val("");
+	$("#prop_value").val("");
+	$('#props').val('selectedIndex',0);
+	$("#table").empty();
+
+}
+  
+function renderProp(){ // get and show information about selected property
+	var prop_id = $("#props").val();
+
+	if( !prop_id ){ msg("Select item"); return; } // exit if no item selected
+	if( !$("#props").val() ){ clearForm(); return; } // clear fields if empty element selected
+
+	// put property information to corresponding fields
+	$("#prop_id").val( prop_id );
+	$("#prop_name").val( cur_prop[prop_id].n );
+	$("#prop_value").val( cur_prop[prop_id].v );
+}
+
+function createProperty(){ // create property for selected unit using entered data
+    // get property information from corresponding fields
+  
+  
+    var prop_id =  $("#prop_id").val(),
+    	name = $("#prop_name").val(),
+    	value = $("#prop_value").val();
+  
+  	// validate ID
+  	if (prop_id in cur_prop) {
+      	msg('You can not create a property with an existing ID!');
+        return;
+  	}
+
+	// check empty field    	
+    if  ( !name.length || !value.length || !cur_unit) {
+    	msg('Please fill in all fields.')
+    	return;
+    }
+  
+    // add property
+  	cur_unit.createCustomField( {id: prop_id, n: name, v: value} );
+
+  	msg( 'Property add: name=' + name + ', value=' +  value );
+
+  	// update DOM
+  	$('#units').change();
+  	getProperties();
+}
+
+function updateProperties(propId, name, value) { // update selected property using entered data
+    // check exist editionly field  
+    if (!(propId in cur_prop) || !name.length || !value.length || !cur_unit) {
+        msg('Please fill in all fields.');
+        return;
+    }
+
+    // check empty field    	
+    if (!name.length || !value.length || !cur_unit) {
+        msg('Por favor llena bien los campos.');
+        return;
+    }
+  
+    // update property
+    cur_unit.updateCustomField({ id: propId, n: name, v: value });
+
+    msg('Campo actualizado: Nombre=' + name + ', Valor=' + value);
+
+    // update DOM
+    //getProperties();
+}
+
+function deleteProperty(){ // delete selected property
+    // get property information from corresponding fields    
+    var prop_id =  $("#prop_id").val();
+
+    if  ( !prop_id ) return;
+
+    if ( !(prop_id in cur_prop) ) {
+    	msg('Property id not found in unit');
+    	return;
+    }
+
+    // confirm user for delete property;
+    var answer = confirm('Do you really want to delete property "' + $("#prop_name").val() + '"?')
+
+    if (!answer) return;
+  
+    // delete property
+  	cur_unit.deleteCustomField( prop_id );
+  	
+   	//delete cur_unit[name];
+
+  	msg( 'Property delete: id=' + prop_id );
+  	
+  	// update DOM
+  	clearForm();
+  	$('#units').change();
+  	getProperties();
+}
+
+// execute when DOM ready
+$(document).ready(function () {
+    // bind actions to button clicks
+	$("#create_btn").click( createProperty );
+	$("#update_btn").click( updateProperties );
+	$("#delete_btn").click( deleteProperty );
+	
+
+    // Nuevo botón "Actualizar Todo"
+    $("#update_all_btn").click(function () {
+        // Simular clic en cada botón "Actualizar" con un retraso de 300 ms
+        $("[id^='update_btn_']").each(function (index) {
+            var button = this;
+            setTimeout(function () {
+                $(button).click();
+            }, 300 * index);
+        });
+    });
+
+	
+	
+	
+	
+	
+  
+    wialon.core.Session.getInstance().initSession("https://hst-api.wialon.com"); // init session
+    // For more info about how to generate token check
+    // http://sdk.wialon.com/playground/demo/app_auth_token
+	wialon.core.Session.getInstance().loginToken("277dcaf0bf24ebf09b57cad843618f5aF2B98717365A033F7F591954ECFB06A48B091060", "", // try to login
+	    function (code) { // login callback
+    		if (code){ msg(wialon.core.Errors.getErrorText(code)); return; } // exit if error code
+	    	msg("Logged successfully");
+        init(); // when login suceed then run init() function
+	});
+});
+
+</script>
+</body>
