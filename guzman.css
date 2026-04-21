@@ -1143,11 +1143,36 @@ border-radius: 25px;
   right: 0%;
 }
 
+#cont {
+  border-radius: 25px;
+  background-color: white;
+  border: 2px solid #73AD21;
+  display: none;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
 #contenedor2 {
   border-radius: 25px;
   background-color: white;
   border: 2px solid #73AD21;
   display: none;
+  overflow: auto;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+}
+
+#root-tables-data {
+  border-radius: 25px;
+  background-color: white;
+  border: 2px solid #73AD21;
   overflow: auto;
   height: 100%;
   width: 100%;

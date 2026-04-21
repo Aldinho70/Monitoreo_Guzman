@@ -1,0 +1,43 @@
+.custom-btn {
+  width: 140px;
+  height: 80px;
+  transition: all 0.25s ease;
+  border: none;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gradientes por tipo */
+.btn-info.custom-btn {
+  background: linear-gradient(135deg, #0dcaf0, #3dd5f3);
+}
+
+.btn-warning.custom-btn {
+  background: linear-gradient(135deg, #ffc107, #ffcd39);
+  color: #000;
+}
+
+.btn-secondary.custom-btn {
+  background: linear-gradient(135deg, #6c757d, #8a939b);
+}
+
+/* Hover más premium */
+.custom-btn:hover,
+.custom-btn:focus {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+  transform: translateY(-6px) scale(1.02);
+}
+
+/* Active */
+.custom-btn.active {
+  outline: 3px solid #ff3b3b;
+  box-shadow: 0 0 20px rgba(255,0,0,0.6);
+}
+
+/* Iconos */
+.custom-btn i {
+  font-size: 22px;
+  margin-bottom: 4px;
+  display: block;
+}

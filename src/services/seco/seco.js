@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
-    const data = await getDataRefrigerado();
-    $("#cont-refrigerado").html(data.length);
-    
+    const data = await getDataSeco();
+    $("#cont-seco").html(data.length);
+
 });
 
 
-const getDataRefrigerado = async () => {
-    const url = "http://ws4cjdg.com/OPERACION_GUZMAN/src/services/refrigerado/refrigerado.php";
+const getDataSeco = async () => {
+    const url = "http://ws4cjdg.com/OPERACION_GUZMAN/src/services/seco/seco.php";
     try {
         const response = await fetch(url);
 
@@ -22,8 +22,8 @@ const getDataRefrigerado = async () => {
     }
 }
 
-const getTableDataRefrigerado = async () => {
-    const data = await getDataRefrigerado()
+const getTableDataSeco = async () => {
+    const data = await getDataSeco()
     let body_table = `` 
 
     console.log(data);
@@ -61,4 +61,4 @@ const getTableDataRefrigerado = async () => {
 
     // $('#root-table-seco').DataTable();
 }
-window.getTableDataRefrigerado = getTableDataRefrigerado;
+window.getTableDataSeco = getTableDataSeco;

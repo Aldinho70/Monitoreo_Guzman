@@ -4,7 +4,6 @@ function cargarJSON4() {
     for (var i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
     }
-    console.log('test');
     markers = [];
     $.ajax({
         url: "json_arrcargadosmov.json",
