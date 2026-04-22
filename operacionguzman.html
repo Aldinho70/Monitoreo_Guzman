@@ -22,8 +22,9 @@
     <script src="https://cdn.datatables.net/2.3.7/js/dataTables.min.js"></script>
 
     <script src="sort-table.js"></script>
-    <script src="./src/services/refrigerado/refrigerado.js"></script>
     <script src="./src/services/seco/seco.js"></script>
+    <script src="./src/services/refrigerado/refrigerado.js"></script>
+    <script src="./src/services/variacion_temperatura/variacion_temperatura.js"></script>
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBEsx7PVLRF_dl69ASpxaEHhsCxpkTckd0&libraries=geometry,drawing,places,visualization&v=quarterly"
         defer></script>
@@ -909,11 +910,14 @@
 
                         <!-- Empty -->
                         <button type="button"
-                            class="btn btn-secondary rounded-4 d-flex align-items-center justify-content-center fw-bold custom-btn">
+                            class="btn btn-secondary rounded-4 d-flex align-items-center justify-content-center fw-bold custom-btn"
+                            onclick="getTableDataVariacion()">
 
                             <div class="btn-content">
-                                <i class="bi bi-inbox btn-icon"></i>
-                                <span class="font-monospace">EMPTY</span>
+                                <!-- <i class="bi bi-inbox btn-icon"></i> -->
+                                <span class="font-monospace">
+                                    Variacion temperatura <br>(<span id="cont-variacion">0</span>)
+                                </span>
                             </div>
                         </button>
 
