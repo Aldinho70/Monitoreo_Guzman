@@ -1,6 +1,11 @@
 document.addEventListener("DOMContentLoaded", async () => {
     const data = await getDataVariacion();
-    $("#cont-Variacion").html(data.length);
+    if(data.length){
+        $("#cont-variacion_temperatura").html(data.length);
+        $("#btn-variacion-temperatura").removeClass('btn-secondary')
+        $("#btn-variacion-temperatura").addClass('btn-danger')
+        $("#btn-variacion-temperatura").addClass('pulse')
+    }
 
 });
 
@@ -28,6 +33,9 @@ const getTableDataVariacion = async () => {
 
     if (data.length) {
         $(".table-other").hide()
+        $("#btn-variacion-temperatura").removeClass('pulse')
+        $("#btn-variacion-temperatura").removeClass('btn-danger')
+        $("#btn-variacion-temperatura").addClass('btn-secondary')
 
         data.forEach(element => {
             body_table += `
