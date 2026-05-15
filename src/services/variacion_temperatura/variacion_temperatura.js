@@ -20,6 +20,8 @@ const getDataVariacion = async () => {
         }
 
         const data = await response.json();
+        console.log(data);
+        
         return data;
 
     } catch (error) {
@@ -42,8 +44,6 @@ const getTableDataVariacion = async () => {
                     <tr class="">
                         <td>${element.name}</td>
                         <td>${element.Temperatura}</td>
-                        <td>${element.Origen}</td>
-                        <td>${element.Destino}</td>
                         <td>${element.Ultimo_mensaje}</td>
                     </tr>`
         });
@@ -54,8 +54,6 @@ const getTableDataVariacion = async () => {
                     <tr>
                     <th scope="col">Unidad</th>
                     <th scope="col">Temperatura</th>
-                    <th scope="col">Origen</th>
-                    <th scope="col">Destino</th>
                     <th scope="col">Ultimo mensaje</th>
                     </tr>
                 </thead>
