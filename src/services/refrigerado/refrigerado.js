@@ -34,10 +34,9 @@ const getTableDataRefrigerado = async () => {
         data.forEach(element => {
             body_table += `
                     <tr class="">
-                        <td>${element.name}</td>
+                        <td>${ (element.is_caja) ? element.tracto : element.name }</td>
+                        <td>${ (element.is_caja) ? element.name : 'Sin caja registrada' }</td>
                         <td>${element.Temperatura}</td>
-                        <td>${element.Origen}</td>
-                        <td>${element.Destino}</td>
                         <td>${element.Ultimo_mensaje}</td>
                     </tr>`
         });
@@ -46,10 +45,9 @@ const getTableDataRefrigerado = async () => {
             <table class="tabla-jsoncargando" id="root-table-seco">
                 <thead>
                     <tr>
-                    <th scope="col">Unidad</th>
+                    <th scope="col">Tracto</th>
+                    <th scope="col">Caja</th>
                     <th scope="col">Temperatura</th>
-                    <th scope="col">Origen</th>
-                    <th scope="col">Destino</th>
                     <th scope="col">Ultimo mensaje</th>
                     </tr>
                 </thead>
