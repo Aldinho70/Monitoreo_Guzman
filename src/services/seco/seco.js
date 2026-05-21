@@ -1,6 +1,8 @@
 import { Modal } from "../components/Modal.js";
+let data;
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const data = await getDataSeco();
+    data = await getDataSeco();
     $("#cont-seco").html(data.length);
 
 });
@@ -24,10 +26,10 @@ const getDataSeco = async () => {
 }
 
 const getTableDataSeco = async () => {
-    const data = await getDataSeco()
+    // const data = await getDataSeco()
     let body_table = `` 
 
-    console.log(data);
+    // console.log(data);
 
     if (data.length) {
         $(".table-other").hide()

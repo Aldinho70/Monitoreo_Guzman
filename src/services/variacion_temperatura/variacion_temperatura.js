@@ -1,6 +1,9 @@
 import { Modal } from "../components/Modal.js";
+
+let data;
+
 document.addEventListener("DOMContentLoaded", async () => {
-    const data = await getDataVariacion();
+    data = await getDataVariacion();
     if(data.length){
         $("#cont-variacion_temperatura").html(data.length);
         $("#btn-variacion-temperatura").removeClass('btn-secondary')
@@ -21,7 +24,6 @@ const getDataVariacion = async () => {
         }
 
         const data = await response.json();
-        console.log(data);
         
         return data;
 
@@ -31,9 +33,11 @@ const getDataVariacion = async () => {
 }
 
 const getTableDataVariacion = async () => {
-    const data = await getDataVariacion()
+    // const _data = await getDataVariacion()
     let body_table = `` 
 
+    // console.log(data.length);
+    
     if (data.length) {
         $(".table-other").hide()
         $("#btn-variacion-temperatura").removeClass('pulse')

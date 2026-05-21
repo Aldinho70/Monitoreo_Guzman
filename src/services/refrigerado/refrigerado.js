@@ -1,13 +1,14 @@
 import { Modal } from "../components/Modal.js";
 
+let data; 
+
 document.addEventListener("DOMContentLoaded", async () => {
-  const data = await getDataRefrigerado();
+  data = await getDataRefrigerado();
   $("#cont-refrigerado").html(data.length);
 });
 
 const getDataRefrigerado = async () => {
-  const url =
-    "http://ws4cjdg.com/OPERACION_GUZMAN/src/services/refrigerado/refrigerado.php";
+  const url = "http://ws4cjdg.com/OPERACION_GUZMAN/src/services/refrigerado/refrigerado.php";
   try {
     const response = await fetch(url);
 
@@ -23,10 +24,10 @@ const getDataRefrigerado = async () => {
 };
 
 const getTableDataRefrigerado = async () => {
-  const data = await getDataRefrigerado();
+//   const _data = await getDataRefrigerado();
   let body_table = ``;
 
-  console.log(data);
+//   console.log(data.length);
 
   if (data.length) {
     $(".table-other").hide();
@@ -75,7 +76,7 @@ const showTemperatura = async (unit_name) => {
 
     if (unit_name === unit.Unidad) {
 
-      console.log(unit);
+    //   console.log(unit);
 
       // =====================================
       // HISTORICO INVERTIDO
