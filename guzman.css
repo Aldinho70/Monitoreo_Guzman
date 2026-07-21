@@ -118,7 +118,27 @@ position: absolute;
   border-radius: 25px;
   bottom: 12%;
   padding: 5px;
-  padding-top: 25px;
+  padding-top: 10px;
+  margin: 10px 0;
+  width: 26.5vw;
+  height: 44vh;
+  overflow-y: auto;
+  border: 1px solid #0adf3f;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+#container {
+  font-size: 10px;
+  position: absolute;
+  right: 27.5vw;
+  top: 0vh;
+  background-color: white;
+  box-shadow: rgba(25, 20, 10, 0.80) 0px 5px 15px, rgba(167, 157, 157, 0.479) 0px 36px 30px 0px, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  border-radius: 25px;
+  bottom: 12%;
+  padding: 5px;
+  padding-top: 10px;
   margin: 10px 0;
   width: 26.5vw;
   height: 44vh;
