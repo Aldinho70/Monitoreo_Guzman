@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     const html_notifications = Notification(notifications);
 
     document.getElementById("notification-list").innerHTML = html_notifications;
-    $("#notif-count").text(notifications.length);
+    // $("#notif-count").text(notifications.length);
 
     setInterval(async () => {
 
@@ -31,7 +31,7 @@ const getNotificationsHistory = async (range_date) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                query: `SELECT * FROM notifications WHERE Date BETWEEN '${range_date.from}' AND '${range_date.to}'`
+                query: `SELECT * FROM notifications WHERE Date BETWEEN '${range_date.from}' AND '${range_date.to}' ORDER BY Date DESC`
                 // query: "SELECT n.* FROM notifications n INNER JOIN ( SELECT notification_description, MAX(Date) AS max_date FROM notifications WHERE Date BETWEEN '2026-07-16 07:00:00' AND '2026-07-16 12:00:00' GROUP BY notification_description ) latest ON n.notification_description = latest.notification_description AND n.Date = latest.max_date"
             })
         });
