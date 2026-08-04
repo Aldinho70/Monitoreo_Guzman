@@ -52,35 +52,40 @@ const getNotificationsHistory = async (range_date) => {
 }
 
 const Notification = (notifications) => {
-    const list = notifications.map(n => {
+    const maxVisibleNotifications = 15;
+    const visibleNotifications = notifications.slice(0, maxVisibleNotifications);
+    const list = visibleNotifications.map(n => {
         const parse_notification = parseNotification(n.notification_description);
+        const temperatureText = parse_notification.temperature !== null ? `${parse_notification.temperature}°C` : "--";
+
         return `
-            <li class="list-group-item notif-item notif-info d-flex gap-2 py-2 px-3">
-                
+            <li class="list-group-item notif-item notif-info d-flex gap-2 align-items-start">
                 <div class="notif-icon bg-primary-subtle text-primary">
                     <i class="bi bi-geo-alt-fill"></i>
                 </div>
 
-                <div class="flex-grow-1 d-flex justify-content-between align-items-stretch">
-
-                    <div class="min-width-0">
-                        <p class="mb-0 fw-semibold small text-truncate">
-                            ${parse_notification.unit} - Variacion de temperatura
-                        </p>
-
-                        <p class="mb-0 text-secondary" style="font-size:.75rem;">
-                            Temperatura: ${parse_notification.temperature}°C
-                        </p>
-
+                <div class="notif-content flex-grow-1 min-width-0">
+                    <div class="d-flex justify-content-between align-items-start gap-2">
+                        <span class="notif-title text-truncate">
+                            ${parse_notification.unit || "Notificación"} - Variación temperatura
+                        </span>
                         <span class="notif-time">${n.date}</span>
                     </div>
 
-                    <!--<button class="btn btn-sm btn-primary ms-3" onclick="">
-                        Atender
-                    </button>-->
+                    <div class="d-flex justify-content-between align-items-center mt-1 gap-2">
+                        <span class="notif-subtitle text-secondary">Temp ${temperatureText}</span>
+                        <button class="btn btn-sm btn-danger btn-notif-attend" type="button">Atender</button>
+                    </div>
                 </div>
             </li>`;
     });
+
+    if (notifications.length > maxVisibleNotifications) {
+        list.push(`
+            <li class="list-group-item notif-note">
+                Mostrando ${maxVisibleNotifications} de ${notifications.length} notificaciones recientes.
+            </li>`);
+    }
 
     return list.join("");
 }
