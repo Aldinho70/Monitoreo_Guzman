@@ -1,4 +1,7 @@
 import { getRangeLast8Hours } from "../../../Utils/date.js";
+import NotificationsService from "../notifcations_service.js";
+
+const notificationsService = new NotificationsService();
 
 document.addEventListener("DOMContentLoaded", async () => {
     const range_date = getRangeLast8Hours();
@@ -31,7 +34,14 @@ const getNotificationsHistory = async (range_date) => {
                 "Content-Type": "application/json"
             },
             body: JSON.stringify({
-                query: `SELECT * FROM notifications WHERE Date BETWEEN '${range_date.from}' AND '${range_date.to}' ORDER BY Date DESC`
+                query: `SELECT *
+                        FROM view_notifications 
+                        WHERE 
+                            notification_follow_id IS NULL
+                            AND
+                            notification_date BETWEEN '${range_date.from}' AND '${range_date.to}' 
+                        ORDER BY notification_date DESC`
+                // query: `SELECT * FROM notifications WHERE Date BETWEEN '${range_date.from}' AND '${range_date.to}' ORDER BY Date DESC`
                 // query: "SELECT n.* FROM notifications n INNER JOIN ( SELECT notification_description, MAX(Date) AS max_date FROM notifications WHERE Date BETWEEN '2026-07-16 07:00:00' AND '2026-07-16 12:00:00' GROUP BY notification_description ) latest ON n.notification_description = latest.notification_description AND n.Date = latest.max_date"
             })
         });
@@ -52,6 +62,8 @@ const getNotificationsHistory = async (range_date) => {
 }
 
 const Notification = (notifications) => {
+    console.log( notifications );
+    
     const maxVisibleNotifications = 15;
     const visibleNotifications = notifications.slice(0, maxVisibleNotifications);
     const list = visibleNotifications.map(n => {
@@ -69,12 +81,12 @@ const Notification = (notifications) => {
                         <span class="notif-title text-truncate">
                             ${parse_notification.unit || "Notificación"} - Variación temperatura
                         </span>
-                        <span class="notif-time">${n.date}</span>
+                        <span class="notif-time">${n.notification_date}</span>
                     </div>
 
                     <div class="d-flex justify-content-between align-items-center mt-1 gap-2">
                         <span class="notif-subtitle text-secondary">Temp ${temperatureText}</span>
-                        <button class="btn btn-sm btn-danger btn-notif-attend" type="button">Atender</button>
+                        <button class="btn btn-sm btn-danger btn-notif-attend" onClick="sendRequest(${n.notification_id})" type="button">Atender</button>
                     </div>
                 </div>
             </li>`;
@@ -100,3 +112,30 @@ function parseNotification(text) {
         temperature: tempMatch ? parseFloat(tempMatch[1]) : null
     };
 }
+
+const sendRequest = async (notification_id) => {
+    
+    const payload = {
+        notification_id,
+        monitorist: 'monitoreo1',
+        comment: 'Atendida via dashboard',
+        resolution: 'otra'
+    };
+
+    try {
+        const response = await notificationsService.attendNotification(payload);
+        if (response.status === 'ok') {
+            alert( 'Notificación atendida exitosamente' );
+
+            setTimeout(() => {
+                location.reload();
+            }, 3000);
+
+        } else {
+            console.log( response );
+        }
+    } catch (error) {
+        console.error('Error al atender la notificación:', error);
+    }
+};
+window.sendRequest = sendRequest;
